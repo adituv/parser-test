@@ -77,7 +77,7 @@ reserved =  fmap TagId . concat <$> lexeme idEntry `sepBy` symbol ","
 
 field :: Parser FieldSpec
 field = do
-    fieldModifier <- option None (Repeated <$ symbol "repeated")
+    fieldModifier <- option None (Repeated <$ try (symbol "repeated"))
     fieldType <- type'
     fieldName <- lexeme ident
     symbol "="
@@ -85,6 +85,6 @@ field = do
     pure FieldSpec{..}
 
 type' :: Parser ProtoType
-type' =  (TUInt32 <$ symbol "uint32")
-     <|> (TBool <$ symbol "bool")
-     <|> (TString <$ symbol "string")
+type' =  (TUInt32 <$ try (symbol "uint32"))
+     <|> (TBool <$ try (symbol "bool"))
+     <|> (TString <$ try (symbol "string"))
