@@ -1,0 +1,31 @@
+name:                parser-test
+version:             0.1.0.0
+-- synopsis:
+-- description:
+homepage:            https://github.com/AdituV/parser-test#readme
+license:             BSD3
+license-file:        LICENSE
+author:              Iris Ward
+maintainer:          aditu.venyhandottir@gmail.com
+copyright:           2017 Iris Ward
+category:            Web
+build-type:          Simple
+cabal-version:       >=1.10
+extra-source-files:  README.md
+
+executable parser-test
+  hs-source-dirs:      src
+  main-is:             Main.hs
+  other-modules:       AST
+                     , Parser.Atto
+                     , Parser.Earley
+                     , Parser.Mega
+                     , Parser.Happy
+  default-language:    Haskell2010
+  build-depends:       base >= 4.7 && < 5
+                     , attoparsec
+                     , criterion
+                     , deepseq
+                     , Earley
+                     , megaparsec
+                     , text
