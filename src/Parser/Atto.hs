@@ -51,13 +51,15 @@ messageEntry = ((Reserved <$> ("reserved" *> skipSpace *> reserved))
 reserved :: Parser [FieldId]
 reserved = 
       (fmap TagId . concat <$>
-        listEntry `sepBy` (skipSpace *> char ',' *> skipSpace))
-  <|> (fmap NameId <$> ident `sepBy` (skipSpace *> char ',' *> skipSpace))
+        idEntry `sepBy` (skipSpace *> char ',' *> skipSpace))
+  <|> (fmap NameId <$>
+        nameEntry `sepBy` (skipSpace *> char ',' *> skipSpace))
   where
-      listEntry =  (pure <$> decimal)
+      idEntry =  (pure <$> decimal)
                <|> (enumFromTo <$> decimal
                                <* skipSpace <* "to" <* skipSpace
                                <*> decimal)
+      nameEntry = char '\"' *> ident <* char '\"'
 
 field :: Parser FieldSpec
 field = do
