@@ -1,0 +1,7 @@
+message Test2 {
+	uint32 a = 1;
+    reserved 2, 3;
+	bool b = 5;
+	reserved 6 to 98;
+	repeated string c = 99;
+}
