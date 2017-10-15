@@ -75,10 +75,10 @@ reserved = fmap concat . (:) <$> fieldIds <*> many (symbol "," *> fieldIds)
   where
     fieldIds :: Prod' r [FieldId]
     fieldIds = fmap TagId <$>
-                  (enumFromTo <$> decimal
-                             <*> (symbol "to" *> decimal))
-            <|> pure . TagId <$> decimal
-            <|> pure . NameId <$> identString
+                  (enumFromTo <$> lexeme decimal
+                             <*> (symbol "to" *> lexeme decimal))
+            <|> pure . TagId <$> lexeme decimal
+            <|> pure . NameId <$> lexeme identString
     identString = token '\"' *> ident <* token '\"'
 
 field :: Prod' r FieldSpec
