@@ -27,5 +27,6 @@ executable parser-test
                      , criterion
                      , deepseq
                      , Earley
+                     , ListLike
                      , megaparsec
                      , text
