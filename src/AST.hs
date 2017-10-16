@@ -18,7 +18,7 @@ data FieldSpec = FieldSpec
   { fieldModifier :: FieldModifier
   , fieldType :: ProtoType
   , fieldName :: String
-  , fieldTag :: Int
+  , fieldTag :: Int32
   } deriving (Show, Generic, NFData)
 
 data ProtoType = TUInt32 | TBool | TString
