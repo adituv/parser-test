@@ -24,6 +24,4 @@ benches testF =
         \file -> bench "test 1" $ nf testF file
     , env (T.readFile "test2.proto") $ 
         \file -> bench "test 2" $ nf testF file
-    , env (T.readFile "test3.proto") $ 
-        \file -> bench "test 3" $ nf testF file
     ]
