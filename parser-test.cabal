@@ -21,8 +21,10 @@ executable parser-test
                      , Parser.Earley
                      , Parser.Mega
                      , Parser.Happy
+                     , Parser.Happy.Tokens
   default-language:    Haskell2010
   build-depends:       base >= 4.7 && < 5
+                     , array
                      , attoparsec
                      , criterion
                      , deepseq
